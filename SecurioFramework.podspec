@@ -27,7 +27,7 @@ With the power of RSA Cryptography and spoofing detection, you can ensure iap's 
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Alex Casasola' => 'alex@casasola.dev' }
-  s.source           = { :git => 'https://github.com/Cryonis/SecurioClient.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/Cryonis/Securio-iOS-Framework.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '8.3'
