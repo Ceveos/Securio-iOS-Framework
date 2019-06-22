@@ -1,0 +1,47 @@
+PODS:
+  - Alamofire (4.8.2)
+  - Moya (13.0.1):
+    - Moya/Core (= 13.0.1)
+  - Moya/Core (13.0.1):
+    - Alamofire (~> 4.1)
+    - Result (~> 4.1)
+  - Nimble (7.3.4)
+  - Quick (1.2.0)
+  - Result (4.1.0)
+  - SecurioFramework (0.1.0):
+    - Moya (~> 13.0)
+    - SwiftyRSA
+  - SwiftyRSA (1.5.0):
+    - SwiftyRSA/ObjC (= 1.5.0)
+  - SwiftyRSA/ObjC (1.5.0)
+
+DEPENDENCIES:
+  - Nimble (~> 7.3.3)
+  - Quick (~> 1.2.0)
+  - SecurioFramework (from `../`)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - Moya
+    - Nimble
+    - Quick
+    - Result
+    - SwiftyRSA
+
+EXTERNAL SOURCES:
+  SecurioFramework:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  Moya: f4a4b80ff2f8a4ffc208dfb31cd91636622fee6e
+  Nimble: 051e3d8912d40138fa5591c78594f95fb172af37
+  Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
+  Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
+  SecurioFramework: 7419acfecace3ad9ad599d7b0601b4ec67992498
+  SwiftyRSA: 6e528fb1b1a87d5111c48081083b141d6d65f1cf
+
+PODFILE CHECKSUM: a5b0452ad981a4ce6d4b154c3710d1a517bdc306
+
+COCOAPODS: 1.7.2

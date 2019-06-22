@@ -1,0 +1,6 @@
+framework module SecurioFramework {
+  umbrella header "SecurioFramework-umbrella.h"
+
+  export *
+  module * { export * }
+}
