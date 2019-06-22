@@ -19,7 +19,8 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
 s.description      = <<-DESC
-Securio allows you to have all the benefits of having server-side iap verification with none of the work of setting your own server up. With the power of RSA Cryptography and spoofing detection, you can ensure iap's can't be spoofed by the tools pirates are most likely to use.
+Securio allows you to have all the benefits of having server-side iap verification with none of the work of setting your own server up.
+With the power of RSA Cryptography and spoofing detection, you can ensure iap's can't be spoofed by the tools pirates are most likely to use.
                       DESC
 
   s.homepage         = 'https://securio.app'
