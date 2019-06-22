@@ -1,6 +1,5 @@
 # SecurioFramework
 
-[![CI Status](https://img.shields.io/travis/Alex Casasola/SecurioFramework.svg?style=flat)](https://travis-ci.org/Alex Casasola/SecurioFramework)
 [![Version](https://img.shields.io/cocoapods/v/SecurioFramework.svg?style=flat)](https://cocoapods.org/pods/SecurioFramework)
 [![License](https://img.shields.io/cocoapods/l/SecurioFramework.svg?style=flat)](https://cocoapods.org/pods/SecurioFramework)
 [![Platform](https://img.shields.io/cocoapods/p/SecurioFramework.svg?style=flat)](https://cocoapods.org/pods/SecurioFramework)
