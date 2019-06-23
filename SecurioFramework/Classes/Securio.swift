@@ -10,11 +10,17 @@ import Foundation
 import SwiftyRSA
 import Moya
 
+/// Main class for Securio; Instantiate this class to begin verifying receipts
 public class Securio {
     let provider = MoyaProvider<SecurioService>()
     let appInfo: AppInfo
     let publicKey: PublicKey
     
+
+    /// Instantiate the Securio class
+    ///
+    /// - Parameter appInfo: All the information needed to uniquely verify your receipts
+    /// - Throws: SecurioError.sanityCheckError - A hacking or spoofing attempt is detected
     public init(with appInfo: AppInfo) throws {
         
         do
@@ -61,6 +67,13 @@ public class Securio {
         }
     }
     
+    /// Validate a **previously-generated** signature to see if it's valid against data.
+    /// Can be used to verify a cached signature is valid for a given receipt.
+    ///
+    /// - Parameters:
+    ///   - data: Any data object you want, such as a receipt
+    ///   - signature: Sigature given by Securio
+    /// - Returns: If the signature is valid for the given data
     public func validate(data: String, with signature: String) -> Bool {
         do {
             let clear = try ClearMessage(string: data, using: .utf8)
@@ -71,6 +84,13 @@ public class Securio {
         }
     }
     
+    
+    /// Validates a receipt with the Securio server. Does not check for previously verified
+    /// signatures.
+    ///
+    /// - Parameters:
+    ///   - receipt: Base-64 string of your receipt data
+    ///   - completion: What will be called when verification is complete
     public func validate(receipt: String, completion: @escaping (SecurioResponse) -> Void) {
 
         self.provider.request(.validate(appInfo: self.appInfo, receipt: receipt)) { result in

@@ -8,6 +8,7 @@
 
 import Foundation
 
+// MARK: - Helper methods for Moya
 public extension String {
     var urlEscaped: String {
         return addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!

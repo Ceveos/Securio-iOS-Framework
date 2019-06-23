@@ -9,13 +9,20 @@
 import Foundation
 import Moya
 
+/// Defining the API used by Moya to communicate with Securio
+///
+/// - validate: Validate a receipt with Securio
 enum SecurioService {
     case validate(appInfo: AppInfo, receipt: String)
 }
 
 // MARK: - TargetType Protocol Implementation
 extension SecurioService: TargetType {
+    
+    /// Base URL for the API calls
     var baseURL: URL { return URL(string: "https://api.securio.app/v1")! }
+    
+    /// What path to take for a given API call
     var path: String {
         switch self {
         case .validate(let appInfo, _):
@@ -23,6 +30,7 @@ extension SecurioService: TargetType {
         }
     }
     
+    /// What method to use for a given API call
     var method: Moya.Method {
         switch self {
             case .validate:
@@ -30,6 +38,7 @@ extension SecurioService: TargetType {
         }
     }
     
+    /// What should be sent as part of a given API call
     var task: Task {
         switch self {
         case let .validate(appInfo, receipt): // Always send parameters as JSON in request body
@@ -39,6 +48,8 @@ extension SecurioService: TargetType {
                 "sandbox": appInfo.sandbox], encoding: JSONEncoding.default)
         }
     }
+    
+    /// Sample response data for a given API call
     var sampleData: Data {
         switch self {
         case .validate(_, _):
@@ -72,7 +83,8 @@ extension SecurioService: TargetType {
 """.utf8Encoded
         }
     }
-        
+    
+    /// Headers to send to the API
     var headers: [String: String]? {
         return ["Content-type": "application/json"]
     }
