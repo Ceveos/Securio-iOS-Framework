@@ -15,7 +15,7 @@ enum SecurioService {
 
 // MARK: - TargetType Protocol Implementation
 extension SecurioService: TargetType {
-    var baseURL: URL { return URL(string: "https://api.securio.app/dev")! }
+    var baseURL: URL { return URL(string: "https://api.securio.app/v1")! }
     var path: String {
         switch self {
         case .validate(let appInfo, _):
