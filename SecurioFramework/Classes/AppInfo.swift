@@ -31,7 +31,6 @@ public struct AppInfo {
         self.appIdentifier = appIdentifier
         self.publicKey = publicKey
         self.sandbox = sandbox
-        
     }
     
 }

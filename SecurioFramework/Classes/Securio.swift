@@ -15,6 +15,7 @@ public class Securio {
     let provider = MoyaProvider<SecurioService>()
     let appInfo: AppInfo
     let publicKey: PublicKey
+    let uuid: String
     
 
     /// Instantiate the Securio class
@@ -28,6 +29,13 @@ public class Securio {
             self.appInfo = appInfo;
             let sanitizedKey = self.appInfo.publicKey.replacingOccurrences(of: "(-----.+-----|\\n)", with: "", options: .regularExpression)
             self.publicKey = try PublicKey(base64Encoded: sanitizedKey)
+            
+            if let uuid = UIDevice.current.identifierForVendor?.uuidString {
+                self.uuid = uuid
+            } else {
+                throw SecurioError.sanityCheckError
+            }
+            
             try self.sanityCheck()
         } catch SecurioError.sanityCheckError {
             // todo: log hack attempt at api
@@ -93,7 +101,7 @@ public class Securio {
     ///   - completion: What will be called when verification is complete
     public func validate(receipt: String, completion: @escaping (SecurioResponse) -> Void) {
 
-        self.provider.request(.validate(appInfo: self.appInfo, receipt: receipt)) { result in
+        self.provider.request(.validate(appInfo: self.appInfo, receipt: receipt, uuid: self.uuid)) { result in
             
             switch result {
             case let .success(moyaResponse):

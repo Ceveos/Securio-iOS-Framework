@@ -13,7 +13,7 @@ import Moya
 ///
 /// - validate: Validate a receipt with Securio
 enum SecurioService {
-    case validate(appInfo: AppInfo, receipt: String)
+    case validate(appInfo: AppInfo, receipt: String, uuid: String)
 }
 
 // MARK: - TargetType Protocol Implementation
@@ -25,7 +25,7 @@ extension SecurioService: TargetType {
     /// What path to take for a given API call
     var path: String {
         switch self {
-        case .validate(let appInfo, _):
+        case .validate(let appInfo, _, _):
             return "/validate/\(appInfo.appIdentifier)"
         }
     }
@@ -41,10 +41,11 @@ extension SecurioService: TargetType {
     /// What should be sent as part of a given API call
     var task: Task {
         switch self {
-        case let .validate(appInfo, receipt): // Always send parameters as JSON in request body
+        case let .validate(appInfo, receipt, uuid): // Always send parameters as JSON in request body
             return .requestParameters(parameters: [
                 "receipt": receipt,
                 "platform": "ios",
+                "uuid": uuid,
                 "sandbox": appInfo.sandbox], encoding: JSONEncoding.default)
         }
     }
@@ -52,7 +53,7 @@ extension SecurioService: TargetType {
     /// Sample response data for a given API call
     var sampleData: Data {
         switch self {
-        case .validate(_, _):
+        case .validate(_, _, _):
             return """
 {
     "status": true,
